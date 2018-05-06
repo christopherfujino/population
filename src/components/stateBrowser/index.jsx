@@ -3,7 +3,6 @@ import {Table} from "react-bootstrap";
 
 const StateBrowser = props => {
   const {state} = props;
-  console.log(state);
   return (
     <Table bordered>
       <tbody>

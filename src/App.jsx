@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Header from "./components/header";
 import StateBrowser from "./components/stateBrowser";
 import compare from "./lib/compare";
-import populate from "./lib/populate";
+import {populate} from "./lib/populate";
 
 class App extends Component {
   constructor (props) {

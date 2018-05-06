@@ -46,6 +46,7 @@
       "react"
     ],
     "rules": {
+      "array-element-newline": "off",
       "arrow-parens": [
         "warn",
         "as-needed"
@@ -70,12 +71,13 @@
       ],
       "line-comment-position": "off",
       "max-len": "warn",
+      "no-confusing-arrow": "off",
       "no-extra-parens": "off",
       "no-inline-comments": "off",
       "no-magic-numbers": "off",
       "no-plusplus": "off",
       "no-ternary": "off",
-      "one-var": "warning",
+      "one-var": "off",
       "padded-blocks": "off",
       "react/forbid-component-props": "warn",
       "react/forbid-prop-types": "off",
