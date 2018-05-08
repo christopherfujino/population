@@ -15,7 +15,7 @@ describe("incrementName()", () => {
   it("adds \" 1\" to a name without a num at the end", () => {
     const inputName = "Joe Dirt";
     const outputName = incrementName(inputName);
-    expect(outputName).toEqual(`${inputName} 1`);
+    expect(outputName).toEqual(`${inputName} 2`);
   });
 
   it("increments num at end, if exists", () => {

@@ -13,7 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint **/*.jsx"
   },
@@ -103,6 +103,13 @@
       "sort-keys": "warn",
       "sort-vars": "warn"
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js|jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**"
+    ]
   },
   "settings": {
     "react": {
