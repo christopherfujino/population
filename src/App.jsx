@@ -1,3 +1,4 @@
+import {BrowserRouter, Route} from "react-router-dom";
 import React, {Component} from "react";
 import Header from "./components/header";
 import StateBrowser from "./components/stateBrowser";
@@ -8,23 +9,38 @@ class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      ...props,
       "population": populate(10)
     };
+    [
+      "renderStateBrowser"
+    ].forEach(funcName => (this[funcName] = this[funcName].bind(this)));
   }
 
   shouldComponentUpdate (nextProps, nextState) {
     return compare.objectShallow(nextState, this.state);
   }
 
-  render () {
+  renderStateBrowser () {
     const {state} = this;
     return (
-      <div className="App">
-        <Header />
-        <div className="container">
-          <StateBrowser state={state} />
-        </div>
-      </div>
+      <StateBrowser state={state} />
+    );
+  }
+
+  render () {
+    return (
+      <BrowserRouter>
+        <React.Fragment>
+          <Header />
+          <div className="container">
+            <Route
+              path="/state"
+              render={this.renderStateBrowser}
+            />
+          </div>
+        </React.Fragment>
+      </BrowserRouter>
     );
   }
 }
