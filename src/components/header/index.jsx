@@ -1,4 +1,4 @@
-import {Nav, NavItem, Navbar} from "react-bootstrap";
+import {Link} from "react-router-dom";
 import React from "react";
 
 const links = [
@@ -8,28 +8,31 @@ const links = [
   }
 ];
 
-const Header = () => (
-  <Navbar>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <a href="/">
-          Population
-        </a>
-      </Navbar.Brand>
-    </Navbar.Header>
-    <Nav>
-      {
-        links.map(link => (
-          <NavItem
-            href={link.href}
-            key={`NavItem: ${link.text}`}
-          >
-            {link.text}
-          </NavItem>
-        ))
-      }
-    </Nav>
-  </Navbar>
+const Header = (props) => (
+  <nav className="navbar navbar-expand-lg">
+    <Link className="navbar-brand" to="/">
+      Population
+    </Link>
+    <div className="collapse navbar-collapse" id="navbarLinks">
+      <ul className="nav navbar-nav">
+        {
+          links.map(link => (
+            <li
+              className="nav-item"
+              key={`NavItem: ${link.text}`}
+            >
+              <Link
+                className="nav-link"
+                to={link.href}
+              >
+                {link.text}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
 );
 
 export default Header;
