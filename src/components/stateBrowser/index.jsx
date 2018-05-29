@@ -1,8 +1,9 @@
 import React from "react";
+import {connect} from "react-redux";
 import {Table} from "react-bootstrap";
 
 const StateBrowser = props => {
-  const {"state": {population}} = props,
+  const {population} = props,
     keys = Object.keys(population[0]);
   return (
     <Table bordered>
@@ -46,4 +47,6 @@ const StateBrowser = props => {
   );
 };
 
-export default StateBrowser;
+const mapStateToProps = state => ({"population": state.population});
+
+export default connect(mapStateToProps)(StateBrowser);
