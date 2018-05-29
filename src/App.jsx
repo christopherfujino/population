@@ -1,4 +1,5 @@
 import {BrowserRouter, Route} from "react-router-dom";
+import CONSTANTS from "./lib/CONSTANTS";
 import React, {Component} from "react";
 import Header from "./components/header";
 import StateBrowser from "./components/stateBrowser";
@@ -10,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       ...props,
-      "population": populate(10)
+      "population": populate(CONSTANTS.populationCount)
     };
     [
       "renderStateBrowser"

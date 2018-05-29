@@ -1,7 +1,8 @@
+import rand from "./rand";
+import CONSTANTS from "./CONSTANTS";
+
 const isUnique = population => (
-  seedName => (
-    typeof population[seedName] === "undefined"
-  )
+  seedName => (population.filter(person => person.name === seedName).length === 0)
 );
 
 const lastCharacter = str => str[str.length - 1];
@@ -27,7 +28,7 @@ const sample = arr => arr[Math.floor(Math.random() * arr.length)];
 const generateRandomName = () => {
   const prefixes = ["Mee", "Mei", "Moo"];
   const suffixes = ["", "pea", "poo", "pette", "ple"];
-  return sample(prefixes) + sample(suffixes) + (Math.random() > 0.5
+  return sample(prefixes) + sample(suffixes) + (rand.get() > 0.5
     ? "s"
     : ""
   );
@@ -39,14 +40,23 @@ const generateUniqueName = population => (
     : generateUniqueName(population)(generateRandomName())
 );
 
+const generateUniquePerson = population => {
+  const person = {"name": generateUniqueName(population)("")};
+  ["intelligence", "tenacity", "strength"].forEach(key => (
+    person[key] = rand.getNormal(CONSTANTS.populationScoreMax)
+  ));
+  return person;
+};
+
 const populateNTimes = count => population => count === 0
   ? population
-  : populateNTimes(count - 1)({
-    ...population,
-    [generateUniqueName(population)("")]: "Booyakalaka"
-  });
+  : populateNTimes(count - 1)(
+    population.concat(
+      generateUniquePerson(population)
+    )
+  );
 
-const populate = count => populateNTimes(count)({});
+const populate = count => populateNTimes(count)([]);
 
 export {
   incrementName,

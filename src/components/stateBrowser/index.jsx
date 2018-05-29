@@ -2,18 +2,41 @@ import React from "react";
 import {Table} from "react-bootstrap";
 
 const StateBrowser = props => {
-  const {"state": {population}} = props;
+  const {"state": {population}} = props,
+    keys = Object.keys(population[0]);
   return (
     <Table bordered>
+      <thead>
+        <tr>
+          {keys.map(keyName => (
+            <th key={`StateBrowser-thead-th-${keyName}`}>
+              {keyName}
+            </th>
+          ))}
+          <th>
+            {"Sum"}
+          </th>
+        </tr>
+      </thead>
       <tbody>
         {
-          Object.keys(population).map(key => (
-            <tr key={`StateBrowser-tr-${key}`}>
+          population.map(person => (
+            <tr key={`StateBrowser-tr-${person.name}`}>
+              {
+                keys.map(keyName => (
+                  <td key={`StateBrowser-${person.name}-td-${keyName}`}>
+                    {person[keyName]}
+                  </td>
+                ))
+              }
               <td>
-                {key}
-              </td>
-              <td>
-                {JSON.stringify(population[key])}
+                {
+                  keys.reduce(
+                    (sum, key) => (typeof person[key] === "number")
+                      ? person[key] + sum
+                      : sum, 0
+                  )
+                }
               </td>
             </tr>
           ))

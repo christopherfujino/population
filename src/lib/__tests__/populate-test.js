@@ -28,15 +28,15 @@ describe("incrementName()", () => {
 describe("uniqueify()", () => {
   it("doesn't change new names", () => {
     const inputName = "Joe Dirt";
-    const existing = {};
+    const existing = [];
     const outputName = uniqueify(existing)(inputName);
     expect(outputName).toEqual(inputName);
   });
 
   it("does change an existing name", () => {
     const inputName = "Joe Dirt";
-    const existing = {[inputName]: true};
-    const outputName = uniqueify(existing)(inputName);
+    const population = [{"name": inputName}];
+    const outputName = uniqueify(population)(inputName);
     expect(outputName).not.toEqual(inputName);
   });
 });
