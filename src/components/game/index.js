@@ -1,8 +1,14 @@
+import Hud from "./Hud";
 import React from "react";
 
 const GameContainer = (props) => {
   return (
-    <h1>Play</h1>
+    <div className="row">
+      <Hud />
+      <div className="col-md-6">
+        Half
+      </div>
+    </div>
   );
 };
 
