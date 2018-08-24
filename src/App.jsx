@@ -11,33 +11,21 @@ import {connect} from "react-redux";
 class App extends Component {
   constructor (props) {
     super(props);
+
     const population = populate(CONSTANTS.populationCount);
     props.dispatch({
       "type": "PUT_POPULATION",
       "population": population
     })
-
-    this.state = {
-      ...props,
-      "population": population
-    };
-    [
-      "renderPlay",
-      "renderStateBrowser"
-    ].forEach(funcName => (this[funcName] = this[funcName].bind(this)));
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    return compare.objectShallow(nextState, this.state);
+    return compare.objectShallow(nextProps, this.props);
   }
 
-  renderPlay () {
-    return (<GameContainer />);
-  }
+  renderPlay = () => <GameContainer />;
 
-  renderStateBrowser () {
-    return <StateBrowser />;
-  }
+  renderStateBrowser = () => <StateBrowser />;
 
   render () {
     return (
