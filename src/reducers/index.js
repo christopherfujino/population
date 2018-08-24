@@ -1,10 +1,10 @@
 const initialState = {
-  "hello": "world"
+  "buttons": ["hello", "world", "yolo", "dawg"]
 };
 
 const reducer = function (state = initialState, action) {
   switch (action.type) {
-    case "ADD_TO_POPULATION":
+    case "PUT_POPULATION":
       return Object.assign(
         {},
         state,

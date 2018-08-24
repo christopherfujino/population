@@ -1,12 +1,15 @@
+import ButtonInterface from "./ButtonInterface.jsx";
 import Hud from "./Hud";
 import React from "react";
 
 const GameContainer = (props) => {
   return (
     <div className="row">
-      <Hud />
       <div className="col-md-6">
-        Half
+        <Hud />
+      </div>
+      <div className="col-md-6">
+        <ButtonInterface />
       </div>
     </div>
   );

@@ -1,0 +1,4 @@
+# Should only lint ./src/*
+scripts
+coverage
+config

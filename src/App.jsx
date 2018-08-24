@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
     const population = populate(CONSTANTS.populationCount);
     props.dispatch({
-      "type": "ADD_TO_POPULATION",
+      "type": "PUT_POPULATION",
       "population": population
     })
 

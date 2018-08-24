@@ -18,9 +18,7 @@ const Global = (props) => {
 const Hud = (props) => {
   const {population} = props;
   return (
-    <div className="col-md-6">
-      <Global population={population} />
-    </div>
+    <Global population={population} />
   );
 };
 
