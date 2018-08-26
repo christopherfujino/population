@@ -1,4 +1,4 @@
-import rand from "./rand";
+import rand from "./rand.js";
 import CONSTANTS from "./CONSTANTS";
 
 const isUnique = population => (
@@ -23,7 +23,7 @@ const uniqueify = population => (
   )
 );
 
-const sample = arr => arr[Math.floor(Math.random() * arr.length)];
+const sample = arr => arr[rand.get(arr.length)]
 
 const generateRandomName = () => {
   const prefixes = ["Mee", "Mei", "Moo"];

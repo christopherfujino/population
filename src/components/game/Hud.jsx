@@ -1,27 +1,32 @@
 import React from "react";
 import {connect} from "react-redux";
 
-const Global = (props) => {
-  const {population} = props;
+const Hud = (props) => {
+  const {cash, population, "reputation": {fame, prestige}} = props;
   return (
     <table className="table">
       <tbody>
         <tr>
+          <th>Cash</th>
+          <td>{`$${cash}`}</td>
+        </tr>
+        <tr>
           <th>Population</th>
           <td>{`${population.length} meeponians`}</td>
+        </tr>
+        <tr>
+          <th>Fame</th>
+          <td>{fame}</td>
+        </tr>
+        <tr>
+          <th>Prestige</th>
+          <td>{prestige}</td>
         </tr>
       </tbody>
     </table>
   );
 };
 
-const Hud = (props) => {
-  const {population} = props;
-  return (
-    <Global population={population} />
-  );
-};
-
-const mapStateToProps = state => ({"population": state.population});
+const mapStateToProps = state => ({...state});
 
 export default connect(mapStateToProps)(Hud);

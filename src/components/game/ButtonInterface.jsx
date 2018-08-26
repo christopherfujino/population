@@ -1,12 +1,22 @@
 import React from "react";
+import actions from "../../lib/actions.js";
 import {connect} from "react-redux";
 
 const ButtonInterface = props => (
-  <React.Fragment>
-    <button className="btn btn-default">Click Me</button>
-  </React.Fragment>
+  <div className="btn-group">
+    {actions.map(obj => (
+      obj.available(props) &&
+      <button
+        className="btn btn-default"
+        key={obj.label}
+        onClick={() => obj.onClick(props)}
+      >
+        {obj.label}
+      </button>
+    ))}
+  </div>
 );
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({...state});
 
 export default connect(mapStateToProps)(ButtonInterface);
