@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 
 const Hud = (props) => {
-  const {cash, population, "reputation": {fame, prestige}} = props;
+  const {cash, "inventory": {stickBundles, sticks}, population, "reputation": {fame, prestige}} = props;
   return (
     <table className="table">
       <tbody>
@@ -21,6 +21,14 @@ const Hud = (props) => {
         <tr>
           <th>Prestige</th>
           <td>{prestige}</td>
+        </tr>
+        <tr>
+          <th>Sticks</th>
+          <td>{sticks}</td>
+        </tr>
+        <tr>
+          <th>Stick Bundles</th>
+          <td>{stickBundles}</td>
         </tr>
       </tbody>
     </table>

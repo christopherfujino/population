@@ -4,8 +4,7 @@ import {connect} from "react-redux";
 
 const ButtonInterface = props => (
   <div className="btn-group">
-    {actions.map(obj => (
-      obj.available(props) &&
+    {actions.map(obj => obj.available(props) &&
       <button
         className="btn btn-default"
         key={obj.label}
@@ -13,7 +12,7 @@ const ButtonInterface = props => (
       >
         {obj.label}
       </button>
-    ))}
+    )}
   </div>
 );
 
